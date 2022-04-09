@@ -21,10 +21,22 @@ def solution(s):
             continue
     
     for c in s:
-        encoding = encoding + ("" if c.islower() else map_dict[CAP]) + (map_dict[c.lower() if c.isupper() else c])
+        enc_format = "{}{}"
+        prefix = "" if not c.isupper() else map_dict[CAP]
+        char_code = map_dict[c.lower()] if c.isalpha() else map_dict[c]
+        addition = enc_format.format(prefix, char_code) 
+        print(c)
+        print(f"Encoding Before:\n{encoding}")
+        print(f"Addition for {c}:\n{addition}")
+        encoding += addition
+        print(f"Encoding after:\n{encoding}")
+        print("*"*50)
     
     return encoding
         
 print("code" + "\n" + solution("code"))
+print("*"*50)
 print("Braille" + "\n" + solution("Braille"))
+print("*"*50)
 print("The quick brown fox jumps over the lazy dog" + "\n" + solution("The quick brown fox jumps over the lazy dog"))
+print("*"*50)
